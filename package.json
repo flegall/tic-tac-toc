@@ -1,0 +1,31 @@
+{
+  "name": "tic-tac-toc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Florent Le Gall <florent.legall@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "devDependencies": {
+    "husky": "^2.7.0",
+    "lint-staged": "^8.2.1",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{js,json,css,md,ts,tsx}": [
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "concurrent": false
+  }
+}
