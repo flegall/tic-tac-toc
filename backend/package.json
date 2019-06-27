@@ -18,12 +18,15 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "babel-jest": "^24.8.0",
-    "nodemon": "^1.14.11"
+    "nodemon": "^1.14.11",
+    "start-server-and-test": "^1.9.1"
   },
   "scripts": {
     "build": "babel src --out-dir lib/ --source-maps inline",
     "doStart": "node ./lib/server.js",
     "predoStart": "yarn build",
-    "start": "nodemon --ignore lib/ --exec yarn doStart"
+    "start": "nodemon --ignore lib/ --exec yarn doStart",
+    "jest": "jest",
+    "test": "start-server-and-test doStart http://localhost:8080/api/hello jest"
   }
 }
