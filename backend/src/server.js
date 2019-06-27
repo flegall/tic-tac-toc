@@ -1,9 +1,11 @@
 import express from "express";
 import bodyParser from "body-parser";
 import nocache from "nocache";
+import cors from "cors";
 
 let server = express();
 server.use(nocache());
+server.use(cors());
 
 server.get("/api/hello", async (req, res, next) => {
   try {
