@@ -1,3 +1,5 @@
 node_modules
 backend/lib
 .DS_Store
+frontend/dist
+frontend/.cache
