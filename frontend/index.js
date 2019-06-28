@@ -41,7 +41,7 @@ const EventState = () => {
 
   switch (stateApp.status) {
     case "WAITING_FOR_PLAYERS":
-      return <Home stateApp={stateApp} />;
+      return <Home stateApp={stateApp} playerId={playerId} />;
     case "WAITING_FOR_OPPONENT":
       if (playerId === stateApp.player1) {
         return <Waiting stateApp={stateApp} />;

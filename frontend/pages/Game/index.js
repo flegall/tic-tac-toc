@@ -21,6 +21,7 @@ class Game extends Component {
       isMyTurn: props.stateApp.playerTurn === props.playerId
     };
 
+    this.handleKeyEventR7 = this.handleKeyEventR7.bind(this);
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
   }
 
