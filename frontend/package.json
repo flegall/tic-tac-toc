@@ -19,6 +19,7 @@
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
+    "preserve": "yarn build",
     "serve": "serve dist"
   }
 }

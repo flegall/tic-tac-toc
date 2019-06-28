@@ -14,7 +14,7 @@ function App() {
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 
-const io = socketIo("http://localhost:8081");
+const io = socketIo("//:8081");
 setTimeout(() => {
   io.emit("reset");
 }, 5000);
