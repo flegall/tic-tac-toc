@@ -92,7 +92,10 @@ export const startGame = ({ playerId }) => {
         player1: playerId
       };
       break;
-    case "WAITING_FOR_OPPONENT":
+    case "WAITING_FOR_OPPONENT": {
+      if (playerId === state.player1) {
+        break;
+      }
       state = {
         ...state,
         status: "ONGOING",
@@ -101,6 +104,7 @@ export const startGame = ({ playerId }) => {
         board: [[null, null, null], [null, null, null], [null, null, null]]
       };
       break;
+    }
   }
 };
 
