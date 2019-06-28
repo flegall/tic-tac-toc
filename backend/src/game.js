@@ -4,6 +4,86 @@ let state = {
 
 export const getState = () => state;
 
+const updateState = newState => {
+  state = {
+    ...state,
+    ...newState
+  };
+};
+
+const checkMoveAllowed = (row, col) => {
+  const { board } = getState();
+  return !board[row][col];
+};
+
+const checkLine = (playerId, row) => {
+  const { board } = getState();
+
+  return !board[row].filter(col => col !== playerId).length;
+};
+
+const checkColumn = (playerId, col) => {
+  const { board } = getState();
+
+  const colArray = board.map(row => row[col]);
+
+  return !colArray.filter(colId => colId !== playerId).length;
+};
+
+const checkDiagonal = playerId => {
+  const { board } = getState();
+
+  const leftToRight = [[0, 0], [1, 1], [2, 2]];
+  const rightToLeft = [[0, 2], [1, 1], [2, 0]];
+
+  return (
+    !leftToRight.filter(([row, col]) => board[row][col] !== playerId).length ||
+    !rightToLeft.filter(([row, col]) => board[row][col] !== playerId).length
+  );
+};
+
+export const play = ({ playerId, position: [row, col] }) => {
+  // check move allow
+  if (!checkMoveAllowed(row, col)) {
+    updateState({
+      error: {
+        playerId,
+        message: "CANNOT_PLAY_HERE"
+      }
+    });
+
+    return;
+  }
+
+  // update board if allow
+  const { board, player1, player2 } = getState();
+  board[row][col] = playerId;
+
+  // check winner
+  if (
+    checkLine(playerId, row) ||
+    checkColumn(playerId, col) ||
+    checkDiagonal(playerId)
+  ) {
+    state = {
+      status: "WAITING_FOR_PLAYERS",
+      lastGameResult: {
+        player1,
+        player2,
+        board,
+        winner: playerId
+      }
+    };
+    return;
+  }
+
+  const playerTurn = playerId === player1 ? player1 : player2;
+  updateState({
+    playerTurn,
+    board
+  });
+};
+
 export const startGame = ({ playerId }) => {
   switch (state.status) {
     case "WAITING_FOR_PLAYERS":

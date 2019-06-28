@@ -4,7 +4,7 @@ import cors from "cors";
 import socketIo from "socket.io";
 import http from "http";
 
-import { getState, startGame, resetState } from "./game";
+import { getState, startGame, resetState, play } from "./game";
 
 let app = express();
 const server = http.createServer(app);
@@ -19,6 +19,11 @@ io.on("connection", socket => {
   });
 
   socket.on("startGame", body => {
+    startGame(body);
+    io.emit("gameState", getState());
+  });
+
+  socket.on("play", body => {
     startGame(body);
     io.emit("gameState", getState());
   });
@@ -65,6 +70,16 @@ app.get("/api/state", (req, res, next) => {
 app.post("/api/startGame", (req, res, next) => {
   try {
     startGame(req.body);
+    io.emit("gameState", getState());
+    res.status(200).send({});
+  } catch (e) {
+    next(e);
+  }
+});
+
+app.post("/api/play", (req, res, next) => {
+  try {
+    play(req.body);
     io.emit("gameState", getState());
     res.status(200).send({});
   } catch (e) {
