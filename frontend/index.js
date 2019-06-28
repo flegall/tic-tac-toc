@@ -36,7 +36,7 @@ const EventState = () => {
     });
   }, []);
 
-  switch ("ONGOING") {
+  switch (stateApp.status) {
     case "WAITING_FOR_PLAYERS":
       return <Home stateApp={stateApp} />;
     case "WAITING_FOR_OPPONENT":
@@ -55,13 +55,10 @@ const App = () => (
 );
 
 const rootElement = document.getElementById("root");
-if (process.env.NODE_ENV === "development") {
-  ReactDOM.render(<App />, rootElement);
-} else {
-  window.R7.ready(() => {
-    ReactDOM.render(<App />, rootElement);
-  });
-}
+
+// window.R7.ready(() => {
+ReactDOM.render(<App />, rootElement);
+// });
 
 io.emit("reset");
 

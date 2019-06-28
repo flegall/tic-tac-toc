@@ -23,9 +23,15 @@ class Game extends Component {
       playerTurn: false
     };
 
+    // const Eventboard = [
+    //   ['A', null, null],
+    //   [null, 'B', 'B'],
+    //   [null, null, null]
+    // ]
+
     io.on("gameState", event => {
       console.log("=> event : ", event);
-      const signPlayer = event.player2 === playerId ? "X" : "O";
+      const signPlayer = event.player2 || "B" === playerId ? "X" : "O";
       const opponentSign = signPlayer === "X" ? "O" : "X";
 
       event.board.forEach((el, i) => {
@@ -66,15 +72,27 @@ class Game extends Component {
   }
 
   handleKeyEvent({ key }) {
+    console.log("=> key : ", key);
+    switch (key) {
+      case 2:
+      case 2:
+      case 2:
+      case 2:
+      case 2:
+      case 2:
+      case 2:
+        // statements_1
+        break;
+      default:
+        // statements_def
+        break;
+    }
     if (this.state[key]) {
       // TODO : Ajouter le socket de la position
     }
-
-    console.log("=> key : ", key);
   }
 
   render() {
-    console.log("value", this.state);
     return (
       <div className="board" ref={el => (this.boardRef = el)}>
         <div className="row">
