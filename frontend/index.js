@@ -14,6 +14,7 @@ import "./style.scss";
 
 export const io = socketIo("//:8081");
 export let playerId = uuidv4();
+console.log("=> playerId : ", playerId);
 
 const initIdPlayer = () => {
   window.R7("getCas", (err, result) => {
@@ -33,7 +34,7 @@ const EventState = () => {
 
   useEffect(() => {
     io.on("gameState", event => {
-      console.log("=> event : ", event);
+      console.log("=> EventState : ", event);
       setStateApp(event);
     });
   }, []);
@@ -42,9 +43,12 @@ const EventState = () => {
     case "WAITING_FOR_PLAYERS":
       return <Home stateApp={stateApp} />;
     case "WAITING_FOR_OPPONENT":
-      return <Waiting stateApp={stateApp} />;
+      if (playerId === stateApp.player1) {
+        return <Waiting stateApp={stateApp} />;
+      }
+      return <Home stateApp={stateApp} />;
     case "ONGOING":
-      return <Game stateApp={stateApp} />;
+      return <Game stateApp={stateApp} playerId={playerId} />;
     default:
       return <Error />;
   }

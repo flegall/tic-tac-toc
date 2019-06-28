@@ -18,78 +18,30 @@ class Game extends Component {
       c7: null,
       c8: null,
       c9: null,
-      isMyTurn: false
+      isMyTurn: props.stateApp.playerTurn === props.playerId
     };
-
-    // const Eventboard = [
-    //   ['A', null, null],
-    //   [null, 'B', 'B'],
-    //   [null, null, null]
-    // ]
-
-    // io.on("gameState", event => {
-    //   try {
-    //     console.log("FUCK");
-    //     console.log("=> event : ", event);
-    //     const signPlayer = event.player2 === playerId ? "X" : "O";
-    //     const opponentSign = signPlayer === "X" ? "O" : "X";
-
-    //     let board = {};
-
-    //     event.board.forEach((el, i) => {
-    //       el.forEach((value, j) => {
-    //         if (value) {
-    //           board[`c${i * 3 + j + 1}`] =
-    //             value === playerId ? signPlayer : opponentSign;
-    //         }
-    //       });
-    //     });
-
-    //     const isMyTurn = event.playerTurn === playerId;
-    //     console.log("gameStatesMyturn", isMyTurn, event.playerTurn, playerId);
-
-    //     this.setState({
-    //       isMyTurn,
-    //       ...board
-    //     });
-    //   } catch (e) {
-    //     console.error(e);
-    //   }
-    // });
 
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log("FUCK");
-    try {
-      debugger;
-      const event = nextProps.gameState;
-      console.log("=> event : ", event);
-      const signPlayer = event.player2 === playerId ? "X" : "O";
-      const opponentSign = signPlayer === "X" ? "O" : "X";
+  componentWillReceiveProps({stateApp, playerId}) {
+    const signPlayer = stateApp.player2 === playerId ? "X" : "O";
+    const opponentSign = signPlayer === "X" ? "O" : "X";
+    let board = [];
 
-      let board = {};
-
-      event.board.forEach((el, i) => {
-        el.forEach((value, j) => {
-          if (value) {
-            board[`c${i * 3 + j + 1}`] =
-              value === playerId ? signPlayer : opponentSign;
-          }
-        });
+    stateApp.board.forEach((el, i) => {
+      el.forEach((value, j) => {
+        if (value) {
+          board[`c${i * 3 + j + 1}`] =
+            value === playerId ? signPlayer : opponentSign
+        }
       });
+    });
 
-      const isMyTurn = event.playerTurn === playerId;
-      console.log("gameStatesMyturn", isMyTurn, event.playerTurn, playerId);
-
-      this.setState({
-        isMyTurn,
-        ...board
-      });
-    } catch (e) {
-      console.error(e);
-    }
+    this.setState({
+      isMyTurn: stateApp.playerTurn === playerId,
+      ...board
+    })
   }
 
   componentDidMount() {
@@ -125,7 +77,6 @@ class Game extends Component {
   }
 
   render() {
-    console.log("renderisMyturn", this.state.isMyTurn);
     return [
       <div key={0} className="caption">
         {this.state.isMyTurn
