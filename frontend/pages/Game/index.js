@@ -24,7 +24,7 @@ class Game extends Component {
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
   }
 
-  componentWillReceiveProps({stateApp, playerId}) {
+  componentWillReceiveProps({ stateApp, playerId }) {
     const signPlayer = stateApp.player2 === playerId ? "X" : "O";
     const opponentSign = signPlayer === "X" ? "O" : "X";
     let board = [];
@@ -33,7 +33,7 @@ class Game extends Component {
       el.forEach((value, j) => {
         if (value) {
           board[`c${i * 3 + j + 1}`] =
-            value === playerId ? signPlayer : opponentSign
+            value === playerId ? signPlayer : opponentSign;
         }
       });
     });
@@ -41,7 +41,7 @@ class Game extends Component {
     this.setState({
       isMyTurn: stateApp.playerTurn === playerId,
       ...board
-    })
+    });
   }
 
   componentDidMount() {
@@ -58,23 +58,23 @@ class Game extends Component {
     document.removeEventListener("keydown", this.handleKeyEvent);
   }
 
-  handleKeyEventR7({ number }) {
+  handleKeyEventR7 = ({ number }) => {
     if (this.state.isMyTurn && number >= 1 && number <= 9) {
       io.emit("play", {
         playerId,
         position: [parseInt((number - 1) / 3), (number - 1) % 3]
       });
     }
-  }
+  };
 
-  handleKeyEvent({ key }) {
+  handleKeyEvent = ({ key }) => {
     if (this.state.isMyTurn && key >= 1 && key <= 9) {
       io.emit("play", {
         playerId,
         position: [parseInt((key - 1) / 3), (key - 1) % 3]
       });
     }
-  }
+  };
 
   render() {
     return [

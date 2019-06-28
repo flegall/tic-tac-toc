@@ -1,8 +1,8 @@
 Arguments: 
-  /Users/flegall/.nvm/versions/node/v8.16.0/bin/node /Users/flegall/.yarn/bin/yarn.js add r7extlib
+  /Users/flegall/.nvm/versions/node/v8.16.0/bin/node /Users/flegall/.yarn/bin/yarn.js add @babel/preset-plugin-proposal-class-properties -D
 
 PATH: 
-  /var/folders/rb/lztkll9s1hb5y9f035jrmg351fgz__/T/yarn--1561726019909-0.35982687368491506:/Volumes/DATA/code/github/tic-tac-toc/frontend/node_modules/.bin:/Users/flegall/.config/yarn/link/node_modules/.bin:/Volumes/DATA/code/github/tic-tac-toc/node_modules/.bin:/Users/flegall/.nvm/versions/node/v8.16.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/flegall/.nvm/versions/node/v8.16.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/flegall/.nvm/versions/node/v8.16.0/bin/node_modules/npm/bin/node-gyp-bin:/Users/flegall/.rvm/gems/ruby-2.5.1/bin:/Users/flegall/.rvm/gems/ruby-2.5.1@global/bin:/Users/flegall/.rvm/rubies/ruby-2.5.1/bin:/Users/flegall/.yarn/bin:/Users/flegall/.config/yarn/global/node_modules/.bin:/Users/flegall/.nvm/versions/node/v8.16.0/bin:/Users/flegall/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/flegall/.rvm/bin
+  /var/folders/rb/lztkll9s1hb5y9f035jrmg351fgz__/T/yarn--1561732968808-0.8616735214023996:/Volumes/DATA/code/github/tic-tac-toc/frontend/node_modules/.bin:/Users/flegall/.config/yarn/link/node_modules/.bin:/Volumes/DATA/code/github/tic-tac-toc/node_modules/.bin:/Users/flegall/.nvm/versions/node/v8.16.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/flegall/.nvm/versions/node/v8.16.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/flegall/.nvm/versions/node/v8.16.0/bin/node_modules/npm/bin/node-gyp-bin:/Users/flegall/.rvm/gems/ruby-2.5.1/bin:/Users/flegall/.rvm/gems/ruby-2.5.1@global/bin:/Users/flegall/.rvm/rubies/ruby-2.5.1/bin:/Users/flegall/.yarn/bin:/Users/flegall/.config/yarn/global/node_modules/.bin:/Users/flegall/.nvm/versions/node/v8.16.0/bin:/Users/flegall/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/flegall/.rvm/bin
 
 Yarn version: 
   1.16.0
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/r7extlib: Not found
+  Error: https://registry.yarnpkg.com/@babel%2fpreset-plugin-proposal-class-properties: Not found
       at Request.params.callback [as _callback] (/Users/flegall/.yarn/lib/cli.js:66091:18)
       at Request.self.callback (/Users/flegall/.yarn/lib/cli.js:129590:22)
       at emitTwo (events.js:126:13)
@@ -34,6 +34,7 @@ npm manifest:
     "license": "MIT",
     "private": true,
     "dependencies": {
+      "@babel/plugin-proposal-class-properties": "^7.4.4",
       "axios": "^0.19.0",
       "components": "^0.1.0",
       "r7extlib": "https://github.com/canalplus/r7extlib.git#0.2.8",
@@ -52,9 +53,9 @@ npm manifest:
     },
     "scripts": {
       "start": "parcel index.html",
-      "build": "parcel build index.html",
-      "preserve": "yarn build",
-      "serve": "serve dist"
+      "build": "NODE_ENV=PRODUCTION parcel build index.html",
+      "preserve": "NODE_ENV=PRODUCTION yarn build",
+      "serve": "NODE_ENV=PRODUCTION serve dist"
     }
   }
 
@@ -183,6 +184,18 @@ Lockfile:
       "@babel/helper-hoist-variables" "^7.4.4"
       "@babel/traverse" "^7.4.4"
       "@babel/types" "^7.4.4"
+  
+  "@babel/helper-create-class-features-plugin@^7.4.4":
+    version "7.4.4"
+    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/@babel%2fhelper-create-class-features-plugin/-/helper-create-class-features-plugin-7.4.4.tgz#fc3d690af6554cc9efc607364a82d48f58736dba"
+    integrity sha512-UbBHIa2qeAGgyiNR9RszVF7bUHEdgS4JAUNT8SiqrAN6YJVxlOxeLr5pBzb5kan302dejJ9nla4RyKcR1XT6XA==
+    dependencies:
+      "@babel/helper-function-name" "^7.1.0"
+      "@babel/helper-member-expression-to-functions" "^7.0.0"
+      "@babel/helper-optimise-call-expression" "^7.0.0"
+      "@babel/helper-plugin-utils" "^7.0.0"
+      "@babel/helper-replace-supers" "^7.4.4"
+      "@babel/helper-split-export-declaration" "^7.4.4"
   
   "@babel/helper-define-map@^7.4.4":
     version "7.4.4"
@@ -351,6 +364,14 @@ Lockfile:
       "@babel/helper-plugin-utils" "^7.0.0"
       "@babel/helper-remap-async-to-generator" "^7.1.0"
       "@babel/plugin-syntax-async-generators" "^7.2.0"
+  
+  "@babel/plugin-proposal-class-properties@^7.4.4":
+    version "7.4.4"
+    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/@babel%2fplugin-proposal-class-properties/-/plugin-proposal-class-properties-7.4.4.tgz#93a6486eed86d53452ab9bab35e368e9461198ce"
+    integrity sha512-WjKTI8g8d5w1Bc9zgwSz2nfrsNQsXcCf9J9cdCvrJV6RF56yztwm4TmJC0MgJ9tvwO9gUA/mcYe89bLdGfiXFg==
+    dependencies:
+      "@babel/helper-create-class-features-plugin" "^7.4.4"
+      "@babel/helper-plugin-utils" "^7.0.0"
   
   "@babel/plugin-proposal-json-strings@^7.2.0":
     version "7.2.0"
@@ -566,7 +587,7 @@ Lockfile:
   
   "@babel/plugin-transform-modules-commonjs@^7.2.0", "@babel/plugin-transform-modules-commonjs@^7.4.4":
     version "7.4.4"
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/@babel%2fplugin-transform-modules-commonjs/-/plugin-transform-modules-commonjs-7.4.4.tgz#0bef4713d30f1d78c2e59b3d6db40e60192cac1e"
+    resolved "https://registry.yarnpkg.com/@babel/plugin-transform-modules-commonjs/-/plugin-transform-modules-commonjs-7.4.4.tgz#0bef4713d30f1d78c2e59b3d6db40e60192cac1e"
     integrity sha512-4sfBOJt58sEo9a2BQXnZq+Q3ZTSAUXyK3E30o36BOGnJ+tvJ6YSxF0PG6kERvbeISgProodWuI9UVG3/FMY6iw==
     dependencies:
       "@babel/helper-module-transforms" "^7.4.4"
@@ -833,7 +854,7 @@ Lockfile:
       "@babel/plugin-transform-react-jsx-self" "^7.0.0"
       "@babel/plugin-transform-react-jsx-source" "^7.0.0"
   
-  "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.4.0":
+  "@babel/runtime@^7.0.0":
     version "7.4.5"
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/@babel%2fruntime/-/runtime-7.4.5.tgz#582bb531f5f9dc67d2fcb682979894f75e253f12"
     integrity sha512-TuI4qpWZP6lGOGIuGWtp9sPluqYICmbk8T/1vpSysqJxRPkudh/ofFWyqdcMsDf2s7KvDL4/YHgKyvcS3g9CJQ==
@@ -1254,11 +1275,7 @@ Lockfile:
   
   after@0.8.2:
     version "0.8.2"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/after/-/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
-  =======
     resolved "https://registry.yarnpkg.com/after/-/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
-  >>>>>>> Stashed changes
     integrity sha1-/ts5T58OAqqXaOcCvaI7UF+ufh8=
   
   ajv@6.5.3:
@@ -1427,11 +1444,7 @@ Lockfile:
   
   arraybuffer.slice@~0.0.7:
     version "0.0.7"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/arraybuffer.slice/-/arraybuffer.slice-0.0.7.tgz#3bbc4275dd584cc1b10809b89d4e8b63a69e7675"
-  =======
     resolved "https://registry.yarnpkg.com/arraybuffer.slice/-/arraybuffer.slice-0.0.7.tgz#3bbc4275dd584cc1b10809b89d4e8b63a69e7675"
-  >>>>>>> Stashed changes
     integrity sha512-wGUIVQXuehL5TCqQun8OW81jGzAWycqzFF8lFp+GOM5BXLYj3bKNsYC4daB7n6XjCqxQA/qgTJ+8ANR3acjrog==
   
   arrify@^1.0.1:
@@ -1582,11 +1595,7 @@ Lockfile:
   
   backo2@1.0.2:
     version "1.0.2"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"
-  =======
     resolved "https://registry.yarnpkg.com/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"
-  >>>>>>> Stashed changes
     integrity sha1-MasayLEpNjRj41s+u2n038+6eUc=
   
   balanced-match@^1.0.0:
@@ -1596,11 +1605,7 @@ Lockfile:
   
   base64-arraybuffer@0.1.5:
     version "0.1.5"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/base64-arraybuffer/-/base64-arraybuffer-0.1.5.tgz#73926771923b5a19747ad666aa5cd4bf9c6e9ce8"
-  =======
     resolved "https://registry.yarnpkg.com/base64-arraybuffer/-/base64-arraybuffer-0.1.5.tgz#73926771923b5a19747ad666aa5cd4bf9c6e9ce8"
-  >>>>>>> Stashed changes
     integrity sha1-c5JncZI7Whl0etZmqlzUv5xunOg=
   
   base64-js@^1.0.2:
@@ -1610,11 +1615,7 @@ Lockfile:
   
   base64id@1.0.0:
     version "1.0.0"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/base64id/-/base64id-1.0.0.tgz#47688cb99bb6804f0e06d3e763b1c32e57d8e6b6"
-  =======
     resolved "https://registry.yarnpkg.com/base64id/-/base64id-1.0.0.tgz#47688cb99bb6804f0e06d3e763b1c32e57d8e6b6"
-  >>>>>>> Stashed changes
     integrity sha1-R2iMuZu2gE8OBtPnY7HDLlfY5rY=
   
   base@^0.11.1:
@@ -1639,11 +1640,7 @@ Lockfile:
   
   better-assert@~1.0.0:
     version "1.0.2"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/better-assert/-/better-assert-1.0.2.tgz#40866b9e1b9e0b55b481894311e68faffaebc522"
-  =======
     resolved "https://registry.yarnpkg.com/better-assert/-/better-assert-1.0.2.tgz#40866b9e1b9e0b55b481894311e68faffaebc522"
-  >>>>>>> Stashed changes
     integrity sha1-QIZrnhueC1W0gYlDEeaPr/rrxSI=
     dependencies:
       callsite "1.0.0"
@@ -1665,11 +1662,7 @@ Lockfile:
   
   blob@0.0.5:
     version "0.0.5"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/blob/-/blob-0.0.5.tgz#d680eeef25f8cd91ad533f5b01eed48e64caf683"
-  =======
     resolved "https://registry.yarnpkg.com/blob/-/blob-0.0.5.tgz#d680eeef25f8cd91ad533f5b01eed48e64caf683"
-  >>>>>>> Stashed changes
     integrity sha512-gaqbzQPqOoamawKg0LGVd7SzLgXS+JH61oWprSLH+P+abTczqJbhTR8CmJ2u9/bUYNmHTGJx/UEmn6doAvvuig==
   
   bluebird@3.5.5:
@@ -1924,11 +1917,7 @@ Lockfile:
   
   callsite@1.0.0:
     version "1.0.0"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/callsite/-/callsite-1.0.0.tgz#280398e5d664bd74038b6f0905153e6e8af1bc20"
-  =======
     resolved "https://registry.yarnpkg.com/callsite/-/callsite-1.0.0.tgz#280398e5d664bd74038b6f0905153e6e8af1bc20"
-  >>>>>>> Stashed changes
     integrity sha1-KAOY5dZkvXQDi28JBRU+borxvCA=
   
   callsites@^2.0.0:
@@ -2221,20 +2210,12 @@ Lockfile:
   
   component-bind@1.0.0:
     version "1.0.0"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/component-bind/-/component-bind-1.0.0.tgz#00c608ab7dcd93897c0009651b1d3a8e1e73bbd1"
-  =======
     resolved "https://registry.yarnpkg.com/component-bind/-/component-bind-1.0.0.tgz#00c608ab7dcd93897c0009651b1d3a8e1e73bbd1"
-  >>>>>>> Stashed changes
     integrity sha1-AMYIq33Nk4l8AAllGx06jh5zu9E=
   
   component-emitter@1.2.1:
     version "1.2.1"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
-  =======
     resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
-  >>>>>>> Stashed changes
     integrity sha1-E3kY1teCg/ffemt8WmPhQOaUJeY=
   
   component-emitter@^1.2.1:
@@ -2244,11 +2225,6 @@ Lockfile:
   
   component-inherit@0.0.3:
     version "0.0.3"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/component-inherit/-/component-inherit-0.0.3.tgz#645fc4adf58b72b649d5cae65135619db26ff143"
-    integrity sha1-ZF/ErfWLcrZJ1crmUTVhnbJv8UM=
-  
-  =======
     resolved "https://registry.yarnpkg.com/component-inherit/-/component-inherit-0.0.3.tgz#645fc4adf58b72b649d5cae65135619db26ff143"
     integrity sha1-ZF/ErfWLcrZJ1crmUTVhnbJv8UM=
   
@@ -2257,7 +2233,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/components/-/components-0.1.0.tgz#2057c08e9c7bf2662feec95c49e5ff2a9ab85ed5"
     integrity sha1-IFfAjpx78mYv7slcSeX/Kpq4XtU=
   
-  >>>>>>> Stashed changes
   compressible@~2.0.14:
     version "2.0.17"
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/compressible/-/compressible-2.0.17.tgz#6e8c108a16ad58384a977f3a482ca20bff2f38c1"
@@ -2361,11 +2336,7 @@ Lockfile:
   
   cookie@0.3.1:
     version "0.3.1"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
-  =======
     resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
-  >>>>>>> Stashed changes
     integrity sha1-5+Ch+e9DtMi6klxcWpboBtFoc7s=
   
   cookie@0.4.0:
@@ -2727,7 +2698,7 @@ Lockfile:
   
   debug@=3.1.0, debug@~3.1.0:
     version "3.1.0"
-    resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
+    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
     integrity sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
     dependencies:
       ms "2.0.0"
@@ -2738,13 +2709,6 @@ Lockfile:
     integrity sha512-mel+jf7nrtEl5Pn1Qx46zARXKDpBbvzezse7p7LqINmdoIk8PYP5SySaxEmYv6TZ0JyEKA1hsCId6DIhgITtWQ==
     dependencies:
       ms "^2.1.1"
-  
-  debug@~3.1.0:
-    version "3.1.0"
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
-    integrity sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
-    dependencies:
-      ms "2.0.0"
   
   decamelize@^1.2.0:
     version "1.2.0"
@@ -3010,11 +2974,7 @@ Lockfile:
   
   engine.io-client@~3.3.1:
     version "3.3.2"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/engine.io-client/-/engine.io-client-3.3.2.tgz#04e068798d75beda14375a264bb3d742d7bc33aa"
-  =======
     resolved "https://registry.yarnpkg.com/engine.io-client/-/engine.io-client-3.3.2.tgz#04e068798d75beda14375a264bb3d742d7bc33aa"
-  >>>>>>> Stashed changes
     integrity sha512-y0CPINnhMvPuwtqXfsGuWE8BB66+B6wTtCofQDRecMQPYX3MYUZXFNKDhdrSe3EVjgOu4V3rxdeqN/Tr91IgbQ==
     dependencies:
       component-emitter "1.2.1"
@@ -3031,11 +2991,7 @@ Lockfile:
   
   engine.io-parser@~2.1.0, engine.io-parser@~2.1.1:
     version "2.1.3"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/engine.io-parser/-/engine.io-parser-2.1.3.tgz#757ab970fbf2dfb32c7b74b033216d5739ef79a6"
-  =======
     resolved "https://registry.yarnpkg.com/engine.io-parser/-/engine.io-parser-2.1.3.tgz#757ab970fbf2dfb32c7b74b033216d5739ef79a6"
-  >>>>>>> Stashed changes
     integrity sha512-6HXPre2O4Houl7c4g7Ic/XzPnHBvaEmN90vtRO9uLmwtRqQmTOw0QMevL1TOfL2Cpu1VzsaTmMotQgMdkzGkVA==
     dependencies:
       after "0.8.2"
@@ -3046,11 +3002,7 @@ Lockfile:
   
   engine.io@~3.3.1:
     version "3.3.2"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/engine.io/-/engine.io-3.3.2.tgz#18cbc8b6f36e9461c5c0f81df2b830de16058a59"
-  =======
     resolved "https://registry.yarnpkg.com/engine.io/-/engine.io-3.3.2.tgz#18cbc8b6f36e9461c5c0f81df2b830de16058a59"
-  >>>>>>> Stashed changes
     integrity sha512-AsaA9KG7cWPXWHp5FvHdDWY3AMWeZ8x+2pUVLcn71qE5AtAzgGbxuclOytygskw8XGmiQafTmnI9Bix3uihu2w==
     dependencies:
       accepts "~1.3.4"
@@ -3716,11 +3668,6 @@ Lockfile:
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
     integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
   
-  gud@^1.0.0:
-    version "1.0.0"
-    resolved "https://registry.yarnpkg.com/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
-    integrity sha512-zGEOVKFM5sVPPrYs7J5/hYEw2Pof8KCyOwyhG8sAF26mCAeUFAcYPu1mwB7hhpIP29zOIBaDqwuHdLp0jvZXjw==
-  
   handlebars@^4.1.2:
     version "4.1.2"
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/handlebars/-/handlebars-4.1.2.tgz#b6b37c1ced0306b221e094fc7aca3ec23b131b67"
@@ -3754,22 +3701,14 @@ Lockfile:
   
   has-binary2@~1.0.2:
     version "1.0.3"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/has-binary2/-/has-binary2-1.0.3.tgz#7776ac627f3ea77250cfc332dab7ddf5e4f5d11d"
-  =======
     resolved "https://registry.yarnpkg.com/has-binary2/-/has-binary2-1.0.3.tgz#7776ac627f3ea77250cfc332dab7ddf5e4f5d11d"
-  >>>>>>> Stashed changes
     integrity sha512-G1LWKhDSvhGeAQ8mPVQlqNcOB2sJdwATtZKl2pDKKHfpf/rYj24lkinxf69blJbnsvtqqNU+L3SL50vzZhXOnw==
     dependencies:
       isarray "2.0.1"
   
   has-cors@1.1.0:
     version "1.1.0"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/has-cors/-/has-cors-1.1.0.tgz#5e474793f7ea9843d1bb99c23eef49ff126fff39"
-  =======
     resolved "https://registry.yarnpkg.com/has-cors/-/has-cors-1.1.0.tgz#5e474793f7ea9843d1bb99c23eef49ff126fff39"
-  >>>>>>> Stashed changes
     integrity sha1-XkdHk/fqmEPRu5nCPu9J/xJv/zk=
   
   has-flag@^1.0.0:
@@ -3851,18 +3790,6 @@ Lockfile:
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
     integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
   
-  history@^4.9.0:
-    version "4.9.0"
-    resolved "https://registry.yarnpkg.com/history/-/history-4.9.0.tgz#84587c2068039ead8af769e9d6a6860a14fa1bca"
-    integrity sha512-H2DkjCjXf0Op9OAr6nJ56fcRkTSNrUiv41vNJ6IswJjif6wlpZK0BTfFbi7qK9dXLSYZxkq5lBsj3vUjlYBYZA==
-    dependencies:
-      "@babel/runtime" "^7.1.2"
-      loose-envify "^1.2.0"
-      resolve-pathname "^2.2.0"
-      tiny-invariant "^1.0.2"
-      tiny-warning "^1.0.0"
-      value-equal "^0.4.0"
-  
   hmac-drbg@^1.0.0:
     version "1.0.1"
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
@@ -3881,13 +3808,6 @@ Lockfile:
     version "6.1.3"
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/hoek/-/hoek-6.1.3.tgz#73b7d33952e01fe27a38b0457294b79dd8da242c"
     integrity sha512-YXXAAhmF9zpQbC7LEcREFtXfGq5K1fmd+4PHkBq8NUqmzW3G+Dq10bI/i0KucLRwss3YYFQ0fSfoxBZYiGUqtQ==
-  
-  hoist-non-react-statics@^3.1.0:
-    version "3.3.0"
-    resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.0.tgz#b09178f0122184fb95acf525daaecb4d8f45958b"
-    integrity sha512-0XsbTXxgiaCDYDIWFcwkmerZPSwywfUqYmwT4jzewKTQSWoE6FCMoUVOeBJWK3E/CrWbxRG3m5GzY4lnIwGRBA==
-    dependencies:
-      react-is "^16.7.0"
   
   hosted-git-info@^2.1.4:
     version "2.7.1"
@@ -4071,11 +3991,7 @@ Lockfile:
   
   indexof@0.0.1:
     version "0.0.1"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
-  =======
     resolved "https://registry.yarnpkg.com/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
-  >>>>>>> Stashed changes
     integrity sha1-gtwzbSMrkGIXnQWrMpOmYFn9Q10=
   
   inflight@^1.0.4:
@@ -4455,11 +4371,7 @@ Lockfile:
   
   isarray@2.0.1:
     version "2.0.1"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/isarray/-/isarray-2.0.1.tgz#a37d94ed9cda2d59865c9f76fe596ee1f338741e"
-  =======
     resolved "https://registry.yarnpkg.com/isarray/-/isarray-2.0.1.tgz#a37d94ed9cda2d59865c9f76fe596ee1f338741e"
-  >>>>>>> Stashed changes
     integrity sha1-o32U7ZzaLVmGXJ92/llu4fM4dB4=
   
   isemail@3.x.x:
@@ -5230,7 +5142,7 @@ Lockfile:
       cli-cursor "^2.0.0"
       wrap-ansi "^3.0.1"
   
-  loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
+  loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.4.0:
     version "1.4.0"
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
     integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
@@ -5432,15 +5344,6 @@ Lockfile:
     version "2.1.0"
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/mimic-fn/-/mimic-fn-2.1.0.tgz#7ed2c2ccccaf84d3ffcb7a69b57711fc2083401b"
     integrity sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
-  
-  mini-create-react-context@^0.3.0:
-    version "0.3.2"
-    resolved "https://registry.yarnpkg.com/mini-create-react-context/-/mini-create-react-context-0.3.2.tgz#79fc598f283dd623da8e088b05db8cddab250189"
-    integrity sha512-2v+OeetEyliMt5VHMXsBhABoJ0/M4RCe7fatd/fBy6SMiKazUSEt3gxxypfnk2SHMkdBYvorHRoQxuGoiwbzAw==
-    dependencies:
-      "@babel/runtime" "^7.4.0"
-      gud "^1.0.0"
-      tiny-warning "^1.0.2"
   
   minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
     version "1.0.1"
@@ -5796,11 +5699,7 @@ Lockfile:
   
   object-component@0.0.3:
     version "0.0.3"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/object-component/-/object-component-0.0.3.tgz#f0c69aa50efc95b866c186f400a33769cb2f1291"
-  =======
     resolved "https://registry.yarnpkg.com/object-component/-/object-component-0.0.3.tgz#f0c69aa50efc95b866c186f400a33769cb2f1291"
-  >>>>>>> Stashed changes
     integrity sha1-8MaapQ78lbhmwYb0AKM3acsvEpE=
   
   object-copy@^0.1.0:
@@ -6133,22 +6032,14 @@ Lockfile:
   
   parseqs@0.0.5:
     version "0.0.5"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/parseqs/-/parseqs-0.0.5.tgz#d5208a3738e46766e291ba2ea173684921a8b89d"
-  =======
     resolved "https://registry.yarnpkg.com/parseqs/-/parseqs-0.0.5.tgz#d5208a3738e46766e291ba2ea173684921a8b89d"
-  >>>>>>> Stashed changes
     integrity sha1-1SCKNzjkZ2bikbouoXNoSSGouJ0=
     dependencies:
       better-assert "~1.0.0"
   
   parseuri@0.0.5:
     version "0.0.5"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/parseuri/-/parseuri-0.0.5.tgz#80204a50d4dbb779bfdc6ebe2778d90e4bce320a"
-  =======
     resolved "https://registry.yarnpkg.com/parseuri/-/parseuri-0.0.5.tgz#80204a50d4dbb779bfdc6ebe2778d90e4bce320a"
-  >>>>>>> Stashed changes
     integrity sha1-gCBKUNTbt3m/3G6+J3jZDkvOMgo=
     dependencies:
       better-assert "~1.0.0"
@@ -6212,13 +6103,6 @@ Lockfile:
     version "2.2.1"
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/path-to-regexp/-/path-to-regexp-2.2.1.tgz#90b617025a16381a879bc82a38d4e8bdeb2bcf45"
     integrity sha512-gu9bD6Ta5bwGrrU8muHzVOBFFREpp2iRkVfhBJahwJ6p6Xw20SjT0MxLnwkjOibQmGSYhiUnf2FLe7k+jcFmGQ==
-  
-  path-to-regexp@^1.7.0:
-    version "1.7.0"
-    resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
-    integrity sha1-Wf3g9DW62suhA6hOnTvGTpa5k30=
-    dependencies:
-      isarray "0.0.1"
   
   path-type@^3.0.0:
     version "3.0.0"
@@ -6841,6 +6725,10 @@ Lockfile:
       minimist "^1.1.3"
       through2 "^2.0.0"
   
+  "r7extlib@https://github.com/canalplus/r7extlib.git#0.2.8":
+    version "0.2.8"
+    resolved "https://github.com/canalplus/r7extlib.git#8af51c1f8bbbcdfc3347051ff671d34cc8fa4348"
+  
   randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
     version "2.1.0"
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -6896,39 +6784,10 @@ Lockfile:
       prop-types "^15.6.2"
       scheduler "^0.13.6"
   
-  react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
+  react-is@^16.8.1, react-is@^16.8.4:
     version "16.8.6"
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
     integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
-  
-  react-router-dom@^5.0.1:
-    version "5.0.1"
-    resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-5.0.1.tgz#ee66f4a5d18b6089c361958e443489d6bab714be"
-    integrity sha512-zaVHSy7NN0G91/Bz9GD4owex5+eop+KvgbxXsP/O+iW1/Ln+BrJ8QiIR5a6xNPtrdTvLkxqlDClx13QO1uB8CA==
-    dependencies:
-      "@babel/runtime" "^7.1.2"
-      history "^4.9.0"
-      loose-envify "^1.3.1"
-      prop-types "^15.6.2"
-      react-router "5.0.1"
-      tiny-invariant "^1.0.2"
-      tiny-warning "^1.0.0"
-  
-  react-router@5.0.1:
-    version "5.0.1"
-    resolved "https://registry.yarnpkg.com/react-router/-/react-router-5.0.1.tgz#04ee77df1d1ab6cb8939f9f01ad5702dbadb8b0f"
-    integrity sha512-EM7suCPNKb1NxcTZ2LEOWFtQBQRQXecLxVpdsP4DW4PbbqYWeRiLyV/Tt1SdCrvT2jcyXAXmVTmzvSzrPR63Bg==
-    dependencies:
-      "@babel/runtime" "^7.1.2"
-      history "^4.9.0"
-      hoist-non-react-statics "^3.1.0"
-      loose-envify "^1.3.1"
-      mini-create-react-context "^0.3.0"
-      path-to-regexp "^1.7.0"
-      prop-types "^15.6.2"
-      react-is "^16.6.0"
-      tiny-invariant "^1.0.2"
-      tiny-warning "^1.0.0"
   
   react@^16.8.6:
     version "16.8.6"
@@ -7177,9 +7036,9 @@ Lockfile:
       stealthy-require "^1.1.1"
       tough-cookie "^2.3.3"
   
-  request@^2.72.0, request@^2.83.0, request@^2.87.0, request@^2.88.0:
+  request@^2.72.0, request@^2.87.0, request@^2.88.0:
     version "2.88.0"
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
+    resolved "https://registry.yarnpkg.com/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
     integrity sha512-NAqBSrijGLZdM0WZNsInLJpkJokL72XYjUpnB0iwsRgxh7dB6COrHnTBNwN0E+lHDAJzu7kLAkDeY08z2/A0hg==
     dependencies:
       aws-sign2 "~0.7.0"
@@ -7229,11 +7088,6 @@ Lockfile:
     version "3.0.0"
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/resolve-from/-/resolve-from-3.0.0.tgz#b22c7af7d9d6881bc8b6e653335eebcb0a188748"
     integrity sha1-six699nWiBvItuZTM17rywoYh0g=
-  
-  resolve-pathname@^2.2.0:
-    version "2.2.0"
-    resolved "https://registry.yarnpkg.com/resolve-pathname/-/resolve-pathname-2.2.0.tgz#7e9ae21ed815fd63ab189adeee64dc831eefa879"
-    integrity sha512-bAFz9ld18RzJfddgrO2e/0S2O81710++chRMUxHjXOYKF6jTAMrUNZrEZ1PvV0zlhfjidm08iRPdTLPno1FuRg==
   
   resolve-url@^0.2.1:
     version "0.2.1"
@@ -7590,21 +7444,12 @@ Lockfile:
   
   socket.io-adapter@~1.1.0:
     version "1.1.1"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/socket.io-adapter/-/socket.io-adapter-1.1.1.tgz#2a805e8a14d6372124dd9159ad4502f8cb07f06b"
+    resolved "https://registry.yarnpkg.com/socket.io-adapter/-/socket.io-adapter-1.1.1.tgz#2a805e8a14d6372124dd9159ad4502f8cb07f06b"
     integrity sha1-KoBeihTWNyEk3ZFZrUUC+MsH8Gs=
   
   socket.io-client@2.2.0, socket.io-client@^2.2.0:
     version "2.2.0"
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/socket.io-client/-/socket.io-client-2.2.0.tgz#84e73ee3c43d5020ccc1a258faeeb9aec2723af7"
-  =======
-    resolved "https://registry.yarnpkg.com/socket.io-adapter/-/socket.io-adapter-1.1.1.tgz#2a805e8a14d6372124dd9159ad4502f8cb07f06b"
-    integrity sha1-KoBeihTWNyEk3ZFZrUUC+MsH8Gs=
-  
-  socket.io-client@2.2.0:
-    version "2.2.0"
-    resolved "https://registry.yarnpkg.com/socket.io-client/-/socket.io-client-2.2.0.tgz#84e73ee3c43d5020ccc1a258faeeb9aec2723af7"
-  >>>>>>> Stashed changes
     integrity sha512-56ZrkTDbdTLmBIyfFYesgOxsjcLnwAKoN4CiPyTVkMQj3zTUh0QAx3GbvIvLpFEOvQWu92yyWICxB0u7wkVbYA==
     dependencies:
       backo2 "1.0.2"
@@ -7624,11 +7469,7 @@ Lockfile:
   
   socket.io-parser@~3.3.0:
     version "3.3.0"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/socket.io-parser/-/socket.io-parser-3.3.0.tgz#2b52a96a509fdf31440ba40fed6094c7d4f1262f"
-  =======
     resolved "https://registry.yarnpkg.com/socket.io-parser/-/socket.io-parser-3.3.0.tgz#2b52a96a509fdf31440ba40fed6094c7d4f1262f"
-  >>>>>>> Stashed changes
     integrity sha512-hczmV6bDgdaEbVqhAeVMM/jfUfzuEZHsQg6eOmLgJht6G3mPKMxYm75w2+qhAQZ+4X+1+ATZ+QFKeOZD5riHng==
     dependencies:
       component-emitter "1.2.1"
@@ -7637,11 +7478,7 @@ Lockfile:
   
   socket.io@^2.2.0:
     version "2.2.0"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/socket.io/-/socket.io-2.2.0.tgz#f0f633161ef6712c972b307598ecd08c9b1b4d5b"
-  =======
     resolved "https://registry.yarnpkg.com/socket.io/-/socket.io-2.2.0.tgz#f0f633161ef6712c972b307598ecd08c9b1b4d5b"
-  >>>>>>> Stashed changes
     integrity sha512-wxXrIuZ8AILcn+f1B4ez4hJTPG24iNgxBBDaJfT6MsyOhVYiTXWexGoPkd87ktJG8kQEcL/NBvRi64+9k4Kc0w==
     dependencies:
       debug "~4.1.0"
@@ -8082,16 +7919,6 @@ Lockfile:
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/tiny-inflate/-/tiny-inflate-1.0.2.tgz#93d9decffc8805bd57eae4310f0b745e9b6fb3a7"
     integrity sha1-k9nez/yIBb1X6uQxDwt0Xptvs6c=
   
-  tiny-invariant@^1.0.2:
-    version "1.0.4"
-    resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.0.4.tgz#346b5415fd93cb696b0c4e8a96697ff590f92463"
-    integrity sha512-lMhRd/djQJ3MoaHEBrw8e2/uM4rs9YMNk0iOr8rHQ0QdbM7D4l0gFl3szKdeixrlyfm9Zqi4dxHCM2qVG8ND5g==
-  
-  tiny-warning@^1.0.0, tiny-warning@^1.0.2:
-    version "1.0.2"
-    resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.2.tgz#1dfae771ee1a04396bdfde27a3adcebc6b648b28"
-    integrity sha512-rru86D9CpQRLvsFG5XFdy0KdLAvjdQDyZCsRcuu60WtzFylDM3eAWSxEVz5kzL2Gp544XiUvPbVKtOA/txLi9Q==
-  
   tmpl@1.0.x:
     version "1.0.4"
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
@@ -8099,11 +7926,7 @@ Lockfile:
   
   to-array@0.1.4:
     version "0.1.4"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/to-array/-/to-array-0.1.4.tgz#17e6c11f73dd4f3d74cda7a4ff3238e9ad9bf890"
-  =======
     resolved "https://registry.yarnpkg.com/to-array/-/to-array-0.1.4.tgz#17e6c11f73dd4f3d74cda7a4ff3238e9ad9bf890"
-  >>>>>>> Stashed changes
     integrity sha1-F+bBH3PdTz10zaek/zI46a2b+JA=
   
   to-arraybuffer@^1.0.0:
@@ -8474,11 +8297,6 @@ Lockfile:
       spdx-correct "^3.0.0"
       spdx-expression-parse "^3.0.0"
   
-  value-equal@^0.4.0:
-    version "0.4.0"
-    resolved "https://registry.yarnpkg.com/value-equal/-/value-equal-0.4.0.tgz#c5bdd2f54ee093c04839d71ce2e4758a6890abc7"
-    integrity sha512-x+cYdNnaA3CxvMaTX0INdTCN8m8aF2uY9BvEqmxuYp8bL09cs/kWVQPVGcA35fMktdOsP69IgU7wFj/61dJHEw==
-  
   vary@^1, vary@~1.1.2:
     version "1.1.2"
     resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
@@ -8659,11 +8477,7 @@ Lockfile:
   
   ws@~6.1.0:
     version "6.1.4"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/ws/-/ws-6.1.4.tgz#5b5c8800afab925e94ccb29d153c8d02c1776ef9"
-  =======
     resolved "https://registry.yarnpkg.com/ws/-/ws-6.1.4.tgz#5b5c8800afab925e94ccb29d153c8d02c1776ef9"
-  >>>>>>> Stashed changes
     integrity sha512-eqZfL+NE/YQc1/ZynhojeV8q+H050oR8AZ2uIev7RU10svA9ZnJUddHcOUZTJLinZ9yEfdA2kSATS2qZK5fhJA==
     dependencies:
       async-limiter "~1.0.0"
@@ -8680,11 +8494,7 @@ Lockfile:
   
   xmlhttprequest-ssl@~1.5.4:
     version "1.5.5"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.5.5.tgz#c2876b06168aadc40e57d97e81191ac8f4398b3e"
-  =======
     resolved "https://registry.yarnpkg.com/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.5.5.tgz#c2876b06168aadc40e57d97e81191ac8f4398b3e"
-  >>>>>>> Stashed changes
     integrity sha1-wodrBhaKrcQOV9l+gRkayPQ5iz4=
   
   xtend@^4.0.0, xtend@~4.0.1:
@@ -8735,11 +8545,7 @@ Lockfile:
   
   yeast@0.1.2:
     version "0.1.2"
-  <<<<<<< Updated upstream
-    resolved "https://front-stb-dev.canal-bis.com:443/npm-fronttv/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
-  =======
     resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
-  >>>>>>> Stashed changes
     integrity sha1-AI4G2AlDIMNy28L47XagymyKxBk=
   
   yup@^0.27.0:
