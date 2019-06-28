@@ -66,7 +66,7 @@ class Game extends Component {
   }
 
   handleKeyEventR7({ number }) {
-    if (isMyTurn && number >= 1 && number <= 9) {
+    if (this.state.isMyTurn && number >= 1 && number <= 9) {
       io.emit("play", {
         playerId,
         position: [parseInt((number - 1) / 3), (number - 1) % 3]
@@ -75,7 +75,7 @@ class Game extends Component {
   }
 
   handleKeyEvent({ key }) {
-    if (isMyTurn && key >= 1 && key <= 9) {
+    if (this.state.isMyTurn && key >= 1 && key <= 9) {
       io.emit("play", {
         playerId,
         position: [parseInt((key - 1) / 3), (key - 1) % 3]
