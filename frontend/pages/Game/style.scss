@@ -1,0 +1,30 @@
+$h-grid: 70%;
+
+$color-background: #000;
+$color-borders: #ecf0f1;
+
+.board {
+  height: $h-grid;
+  background: $color-background;
+}
+
+.row {
+  display: flex;
+
+  &:nth-child(2) {
+    border-top: 3px solid $color-borders;
+    border-bottom: 3px solid $color-borders;
+  }
+
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:nth-child(2) {
+      border-left: 3px solid $color-borders;
+      border-right: 3px solid $color-borders;
+    }
+  }
+}
