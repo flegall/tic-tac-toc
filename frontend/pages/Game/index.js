@@ -68,27 +68,20 @@ class Game extends Component {
   }
 
   handleKeyEventR7({ number }) {
-    console.log("=> number : ", number);
+    if (number >= 1 && number <= 9) {
+      io.emit("play", {
+        playerId,
+        position: [Number((number - 1) / 3), Number((number - 1) % 3)]
+      });
+    }
   }
 
   handleKeyEvent({ key }) {
-    console.log("=> key : ", key);
-    switch (key) {
-      case 2:
-      case 2:
-      case 2:
-      case 2:
-      case 2:
-      case 2:
-      case 2:
-        // statements_1
-        break;
-      default:
-        // statements_def
-        break;
-    }
-    if (this.state[key]) {
-      // TODO : Ajouter le socket de la position
+    if (key >= 1 && key <= 9) {
+      io.emit("play", {
+        playerId,
+        position: [Number((key - 1) / 3), Number((key - 1) % 3)]
+      });
     }
   }
 
