@@ -93,7 +93,7 @@ export const play = ({ playerId, position: [row, col] }) => {
     return;
   }
 
-  const playerTurn = playerId === player1 ? player1 : player2;
+  const playerTurn = playerId === player1 ? player2 : player1;
   updateState({
     playerTurn,
     board
