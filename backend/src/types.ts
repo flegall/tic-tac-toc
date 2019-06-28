@@ -18,6 +18,7 @@ export type GameState =
     } & Game);
 
 /**
+  GET /api/state: Récupérer l'état courant du jeu
   POST /api/reset : réinitialiser : Bascule en WAITING_FOR_PLAYERS (sans lastGameResult);
   POST /api/startGame : {playerId: string} : appelé par les deux joueurs : Bascule en  WAITING_FOR_OPPONENT ou ONGOING
   POST /api/play : {playerId: string, position: [number, number] } : 
