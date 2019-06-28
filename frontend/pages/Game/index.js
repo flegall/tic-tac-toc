@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { io /*, playerId*/ } from "../..";
-
-const playerId = "A";
+import { io, playerId } from "../..";
 
 import "./style.scss";
 
@@ -20,7 +18,7 @@ class Game extends Component {
       c7: null,
       c8: null,
       c9: null,
-      playerTurn: false
+      isMyTurn: false
     };
 
     // const Eventboard = [
@@ -46,7 +44,7 @@ class Game extends Component {
       });
 
       this.setState({
-        playerTurn: event.playerTurn === playerId
+        isMyTurn: event.playerTurn === playerId
       });
     });
 
@@ -68,26 +66,31 @@ class Game extends Component {
   }
 
   handleKeyEventR7({ number }) {
-    if (number >= 1 && number <= 9) {
+    if (isMyTurn && number >= 1 && number <= 9) {
       io.emit("play", {
         playerId,
-        position: [Number((number - 1) / 3), Number((number - 1) % 3)]
+        position: [parseInt((number - 1) / 3), (number - 1) % 3]
       });
     }
   }
 
   handleKeyEvent({ key }) {
-    if (key >= 1 && key <= 9) {
+    if (isMyTurn && key >= 1 && key <= 9) {
       io.emit("play", {
         playerId,
-        position: [Number((key - 1) / 3), Number((key - 1) % 3)]
+        position: [parseInt((key - 1) / 3), (key - 1) % 3]
       });
     }
   }
 
   render() {
-    return (
-      <div className="board" ref={el => (this.boardRef = el)}>
+    return [
+      <div key={0} className="caption">
+        {this.state.isMyTurn
+          ? "À vous de jouer"
+          : "En attente de l'adversaire.."}
+      </div>,
+      <div key={1} className="board" ref={el => (this.boardRef = el)}>
         <div className="row">
           <div id="c1">{this.state.c1}</div>
           <div id="c2">{this.state.c2}</div>
@@ -104,7 +107,7 @@ class Game extends Component {
           <div id="c9">{this.state.c9}</div>
         </div>
       </div>
-    );
+    ];
   }
 }
 
