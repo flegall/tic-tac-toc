@@ -27,28 +27,69 @@ class Game extends Component {
     //   [null, null, null]
     // ]
 
-    io.on("gameState", event => {
+    // io.on("gameState", event => {
+    //   try {
+    //     console.log("FUCK");
+    //     console.log("=> event : ", event);
+    //     const signPlayer = event.player2 === playerId ? "X" : "O";
+    //     const opponentSign = signPlayer === "X" ? "O" : "X";
+
+    //     let board = {};
+
+    //     event.board.forEach((el, i) => {
+    //       el.forEach((value, j) => {
+    //         if (value) {
+    //           board[`c${i * 3 + j + 1}`] =
+    //             value === playerId ? signPlayer : opponentSign;
+    //         }
+    //       });
+    //     });
+
+    //     const isMyTurn = event.playerTurn === playerId;
+    //     console.log("gameStatesMyturn", isMyTurn, event.playerTurn, playerId);
+
+    //     this.setState({
+    //       isMyTurn,
+    //       ...board
+    //     });
+    //   } catch (e) {
+    //     console.error(e);
+    //   }
+    // });
+
+    this.handleKeyEvent = this.handleKeyEvent.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("FUCK");
+    try {
+      debugger;
+      const event = nextProps.gameState;
       console.log("=> event : ", event);
-      const signPlayer = event.player2 || "B" === playerId ? "X" : "O";
+      const signPlayer = event.player2 === playerId ? "X" : "O";
       const opponentSign = signPlayer === "X" ? "O" : "X";
+
+      let board = {};
 
       event.board.forEach((el, i) => {
         el.forEach((value, j) => {
           if (value) {
-            this.setState({
-              [`c${i * 3 + j + 1}`]:
-                value === playerId ? signPlayer : opponentSign
-            });
+            board[`c${i * 3 + j + 1}`] =
+              value === playerId ? signPlayer : opponentSign;
           }
         });
       });
 
-      this.setState({
-        isMyTurn: event.playerTurn === playerId
-      });
-    });
+      const isMyTurn = event.playerTurn === playerId;
+      console.log("gameStatesMyturn", isMyTurn, event.playerTurn, playerId);
 
-    this.handleKeyEvent = this.handleKeyEvent.bind(this);
+      this.setState({
+        isMyTurn,
+        ...board
+      });
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   componentDidMount() {
@@ -84,6 +125,7 @@ class Game extends Component {
   }
 
   render() {
+    console.log("renderisMyturn", this.state.isMyTurn);
     return [
       <div key={0} className="caption">
         {this.state.isMyTurn

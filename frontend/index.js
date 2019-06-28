@@ -29,6 +29,8 @@ const EventState = () => {
     status: "WAITING_FOR_PLAYERS"
   });
 
+  console.log({ stateApp });
+
   useEffect(() => {
     io.on("gameState", event => {
       console.log("=> event : ", event);
