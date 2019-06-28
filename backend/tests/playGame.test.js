@@ -313,4 +313,88 @@ describe("playGame", () => {
       });
     }
   });
+
+  it("Match should be null", async () => {
+    {
+      await requestApi({
+        method: "POST",
+        url: `${BACKEND_URL}/api/play`,
+        body: { playerId: "2", position: [0, 0] }
+      });
+    }
+    {
+      await requestApi({
+        method: "POST",
+        url: `${BACKEND_URL}/api/play`,
+        body: { playerId: "1", position: [0, 1] }
+      });
+    }
+    {
+      await requestApi({
+        method: "POST",
+        url: `${BACKEND_URL}/api/play`,
+        body: { playerId: "2", position: [0, 2] }
+      });
+    }
+    {
+      await requestApi({
+        method: "POST",
+        url: `${BACKEND_URL}/api/play`,
+        body: { playerId: "1", position: [1, 0] }
+      });
+    }
+    {
+      await requestApi({
+        method: "POST",
+        url: `${BACKEND_URL}/api/play`,
+        body: { playerId: "2", position: [1, 1] }
+      });
+    }
+    {
+      await requestApi({
+        method: "POST",
+        url: `${BACKEND_URL}/api/play`,
+        body: { playerId: "1", position: [2, 0] }
+      });
+    }
+    {
+      await requestApi({
+        method: "POST",
+        url: `${BACKEND_URL}/api/play`,
+        body: { playerId: "2", position: [1, 2] }
+      });
+    }
+    {
+      await requestApi({
+        method: "POST",
+        url: `${BACKEND_URL}/api/play`,
+        body: { playerId: "1", position: [2, 2] }
+      });
+    }
+    {
+      const { response, body } = await requestApi({
+        method: "POST",
+        url: `${BACKEND_URL}/api/play`,
+        body: { playerId: "2", position: [2, 1] }
+      });
+      expect(response.statusCode).toBe(200);
+      expect(body).toEqual({});
+    }
+    {
+      const { response, body } = await requestApi({
+        method: "GET",
+        url: `${BACKEND_URL}/api/state`
+      });
+      expect(response.statusCode).toBe(200);
+      expect(body).toEqual({
+        status: "WAITING_FOR_PLAYERS",
+        lastGameResult: {
+          player1: "1",
+          player2: "2",
+          board: [["2", "1", "2"], ["1", "2", "2"], ["1", "2", "1"]],
+          winner: null
+        }
+      });
+    }
+  });
 });

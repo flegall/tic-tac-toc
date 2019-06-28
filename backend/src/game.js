@@ -42,6 +42,12 @@ const checkDiagonal = playerId => {
   );
 };
 
+const checkNullMatch = () => {
+  const { board } = getState();
+
+  return !board.filter(row => !!row.filter(col => col === null).length).length;
+};
+
 export const play = ({ playerId, position: [row, col] }) => {
   // check move allow
   if (!checkMoveAllowed(row, col)) {
@@ -51,7 +57,6 @@ export const play = ({ playerId, position: [row, col] }) => {
         message: "CANNOT_PLAY_HERE"
       }
     });
-
     return;
   }
 
@@ -72,6 +77,17 @@ export const play = ({ playerId, position: [row, col] }) => {
         player2,
         board,
         winner: playerId
+      }
+    };
+    return;
+  } else if (checkNullMatch()) {
+    state = {
+      status: "WAITING_FOR_PLAYERS",
+      lastGameResult: {
+        player1,
+        player2,
+        board,
+        winner: null
       }
     };
     return;
