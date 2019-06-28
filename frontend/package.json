@@ -23,8 +23,8 @@
   },
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html",
-    "preserve": "yarn build",
-    "serve": "serve dist"
+    "build": "NODE_ENV=PRODUCTION parcel build index.html",
+    "preserve": "NODE_ENV=PRODUCTION yarn build",
+    "serve": "NODE_ENV=PRODUCTION serve dist"
   }
 }

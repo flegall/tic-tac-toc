@@ -55,10 +55,13 @@ const App = () => (
 );
 
 const rootElement = document.getElementById("root");
-
-// window.R7.ready(() => {
-ReactDOM.render(<App />, rootElement);
-// });
+if (process.env.NODE_ENV === "development") {
+  ReactDOM.render(<App />, rootElement);
+} else {
+  window.R7.ready(() => {
+    ReactDOM.render(<App />, rootElement);
+  });
+}
 
 io.emit("reset");
 
