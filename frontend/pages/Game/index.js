@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { io, playerId } from "../..";
+import { io /*, playerId*/ } from "../..";
+
+const playerId = "A";
 
 import "./style.scss";
 
@@ -9,22 +11,37 @@ class Game extends Component {
     super(props);
 
     this.state = {
-      c1: this.p1,
-      c2: this.p1,
-      c3: this.p1,
-      c4: this.p1,
+      c1: null,
+      c2: null,
+      c3: null,
+      c4: null,
       c5: null,
       c6: null,
-      c7: this.p2,
+      c7: null,
       c8: null,
-      c9: null
+      c9: null,
+      playerTurn: false
     };
 
     io.on("gameState", event => {
       console.log("=> event : ", event);
+      const signPlayer = event.player2 === playerId ? "X" : "O";
+      const opponentSign = signPlayer === "X" ? "O" : "X";
 
-      console.log("=> event.playerTurn : ", event.playerTurn);
-      console.log("=> playerId : ", playerId);
+      event.board.forEach((el, i) => {
+        el.forEach((value, j) => {
+          if (value) {
+            this.setState({
+              [`c${i * 3 + j + 1}`]:
+                value === playerId ? signPlayer : opponentSign
+            });
+          }
+        });
+      });
+
+      this.setState({
+        playerTurn: event.playerTurn === playerId
+      });
     });
 
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
@@ -57,6 +74,7 @@ class Game extends Component {
   }
 
   render() {
+    console.log("value", this.state);
     return (
       <div className="board" ref={el => (this.boardRef = el)}>
         <div className="row">

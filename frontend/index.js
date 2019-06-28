@@ -36,7 +36,7 @@ const EventState = () => {
     });
   }, []);
 
-  switch (stateApp.status) {
+  switch ("ONGOING") {
     case "WAITING_FOR_PLAYERS":
       return <Home stateApp={stateApp} />;
     case "WAITING_FOR_OPPONENT":
