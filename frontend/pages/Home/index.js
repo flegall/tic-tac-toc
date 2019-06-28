@@ -25,22 +25,25 @@ const Home = ({ stateApp, playerId }) => {
   }, []);
 
   let msg = "";
+  let color = "#ecf0f1";
 
   if (stateApp.lastGameResult) {
     if (stateApp.lastGameResult.winner === null) {
       msg = "Match nul";
     } else if (stateApp.lastGameResult.winner === playerId) {
+      color = "#2ecc71";
       msg = "Vous avez gagné";
     } else {
+      color = "#e74c3c";
       msg = "Vous avez perdu";
     }
   }
 
   return (
-    <div>
-      Tic Tac Toc
+    <div style={{ textAlign: "center" }}>
+      <div style={{ fontSize: "30px" }}>Tic Tac Toc</div>
       <br />
-      {msg && <div>{msg}</div>}
+      <div style={{ color }}>{msg}</div>
       Pour demarrer la partie appuyer sur OK
     </div>
   );

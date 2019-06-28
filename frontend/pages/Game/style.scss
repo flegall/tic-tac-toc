@@ -10,6 +10,7 @@ $color-borders: #ecf0f1;
 
 .row {
   display: flex;
+  font-size: 40px;
 
   &:nth-child(2) {
     border-top: 3px solid $color-borders;
