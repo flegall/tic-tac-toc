@@ -40,7 +40,7 @@ describe("playGame", () => {
       expect(response.statusCode).toBe(200);
       expect(body).toEqual({
         status: "ONGOING",
-        playerTurn: "2",
+        playerTurn: "1",
         player1: "1",
         player2: "2",
         board: [["2", null, null], [null, null, null], [null, null, null]]
@@ -78,7 +78,7 @@ describe("playGame", () => {
       expect(response.statusCode).toBe(200);
       expect(body).toEqual({
         status: "ONGOING",
-        playerTurn: "2",
+        playerTurn: "1",
         player1: "1",
         player2: "2",
         error: {
