@@ -1,15 +1,34 @@
 import express from "express";
 import nocache from "nocache";
 import cors from "cors";
+import socketIo from "socket.io";
+import http from "http";
 
 import { getState, startGame, resetState } from "./game";
 
-let server = express();
-server.use(nocache());
-server.use(express.json());
-server.use(cors());
+let app = express();
+const server = http.createServer(app);
 
-server.get("/api/hello", async (req, res, next) => {
+const io = socketIo(8081);
+io.on("connection", socket => {
+  socket.emit("gameState", getState());
+
+  socket.on("reset", () => {
+    resetState();
+    io.emit("gameState", getState());
+  });
+
+  socket.on("startGame", body => {
+    startGame(body);
+    io.emit("gameState", getState());
+  });
+});
+
+app.use(nocache());
+app.use(express.json());
+app.use(cors());
+
+app.get("/api/hello", async (req, res, next) => {
   try {
     res.send({ hello: "world" });
   } catch (e) {
@@ -17,7 +36,7 @@ server.get("/api/hello", async (req, res, next) => {
   }
 });
 
-server.post("/api/hello", async (req, res, next) => {
+app.post("/api/hello", async (req, res, next) => {
   try {
     res.send({ hello: "world", body: req.body });
   } catch (e) {
@@ -25,16 +44,17 @@ server.post("/api/hello", async (req, res, next) => {
   }
 });
 
-server.post("/api/reset", (req, res, next) => {
+app.post("/api/reset", (req, res, next) => {
   try {
     resetState();
+    io.emit("gameState", getState());
     res.status(200).send({});
   } catch (e) {
     next(e);
   }
 });
 
-server.get("/api/state", (req, res, next) => {
+app.get("/api/state", (req, res, next) => {
   try {
     res.status(200).send(getState());
   } catch (e) {
@@ -42,9 +62,10 @@ server.get("/api/state", (req, res, next) => {
   }
 });
 
-server.post("/api/startGame", (req, res, next) => {
+app.post("/api/startGame", (req, res, next) => {
   try {
     startGame(req.body);
+    io.emit("gameState", getState());
     res.status(200).send({});
   } catch (e) {
     next(e);
