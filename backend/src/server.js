@@ -24,7 +24,7 @@ io.on("connection", socket => {
   });
 
   socket.on("play", body => {
-    startGame(body);
+    play(body);
     io.emit("gameState", getState());
   });
 });
